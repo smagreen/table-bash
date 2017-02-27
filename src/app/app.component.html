@@ -1,3 +1,17 @@
-<h1>
-  {{title}}
-</h1>
+<div class="container">
+  <h1>
+    {{title}}
+  </h1>
+
+  <alert type="success" *ngIf="timeRemaining >= 0"><h2>Time remaining: {{timeRemaining}} seconds</h2></alert>
+  <alert type="danger" *ngIf="timeRemaining < 0"><h2>Game Over!</h2></alert>
+  <button type="button" class="btn btn-primary" (click)="reset()">Reset</button>
+
+  <div>
+      <h1>{{ currentSum }} = <form ng-submit="onSubmit()" >
+        <input type="text" name="answer" [(ngModel)]="model.answer" #answer="ngModel" style="width: 100px" />
+        <button type="submit" class="btn btn-success">Submit</button></form>
+      </h1>
+  </div>
+  {{diagnostic}}
+</div>
